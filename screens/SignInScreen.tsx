@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input, Button } from 'react-native-elements';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { browserLocalPersistence, getAuth, setPersistence, signInWithEmailAndPassword } from 'firebase/auth';
 
 const auth = getAuth();
 
@@ -24,7 +24,7 @@ const SignInScreen = () => {
 
     try {
       await signInWithEmailAndPassword(auth, value.email, value.password);
-    } catch (error) {
+    } catch (error: any) {
       setValue({
         ...value,
         error: error.message,
@@ -46,9 +46,8 @@ const SignInScreen = () => {
           onChangeText={(text) => setValue({ ...value, email: text })}
           leftIcon={<Icon
             name='envelope'
-            size={16}
-          />}
-        />
+            size={16} />}
+          autoCompleteType={undefined} />
 
         <Input
           placeholder='Password'
@@ -58,9 +57,8 @@ const SignInScreen = () => {
           secureTextEntry={true}
           leftIcon={<Icon
             name='key'
-            size={16}
-          />}
-        />
+            size={16} />}
+          autoCompleteType={undefined} />
 
         <Button title="Sign in" buttonStyle={styles.control} onPress={signIn} />
       </View>
@@ -79,7 +77,9 @@ const styles = StyleSheet.create({
 
   controls: {
     flex: 1,
+    width: "90%"
   },
+
 
   control: {
     marginTop: 10

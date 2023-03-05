@@ -4,8 +4,9 @@ import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
 const auth = getAuth();
 
 export function useAuthentication() {
-  const [user, setUser] = React.useState<User>();
 
+  const [user, setUser] = React.useState<User>();
+  const [loading, setLoading] = React.useState<boolean>(true);
   React.useEffect(() => {
     const unsubscribeFromAuthStatuChanged = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -16,12 +17,13 @@ export function useAuthentication() {
         // User is signed out
         setUser(undefined);
       }
+      setLoading(false);
     });
-
+    setLoading(true);
     return unsubscribeFromAuthStatuChanged;
   }, []);
 
   return {
-    user
+    user, loading
   };
 }

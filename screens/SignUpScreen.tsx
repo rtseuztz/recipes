@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input, Button } from 'react-native-elements';
 import { StackScreenProps } from '@react-navigation/stack';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, setPersistence, browserLocalPersistence } from 'firebase/auth';
 
 const auth = getAuth();
 
@@ -26,7 +26,7 @@ const SignUpScreen: React.FC<StackScreenProps<any>> = ({ navigation }) => {
     try {
       await createUserWithEmailAndPassword(auth, value.email, value.password);
       navigation.navigate('Sign In');
-    } catch (error) {
+    } catch (error: any) {
       setValue({
         ...value,
         error: error.message,
@@ -48,9 +48,7 @@ const SignUpScreen: React.FC<StackScreenProps<any>> = ({ navigation }) => {
           onChangeText={(text) => setValue({ ...value, email: text })}
           leftIcon={<Icon
             name='envelope'
-            size={16}
-          />}
-        />
+            size={16} />} autoCompleteType={undefined} />
 
         <Input
           placeholder='Password'
@@ -60,10 +58,7 @@ const SignUpScreen: React.FC<StackScreenProps<any>> = ({ navigation }) => {
           secureTextEntry={true}
           leftIcon={<Icon
             name='key'
-            size={16}
-          />}
-        />
-
+            size={16} />} autoCompleteType={undefined} />
         <Button title="Sign up" buttonStyle={styles.control} onPress={signUp} />
       </View>
     </View>
@@ -77,10 +72,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    width: "100%",
   },
 
   controls: {
     flex: 1,
+    width: "90%"
   },
 
   control: {

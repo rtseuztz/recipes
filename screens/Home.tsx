@@ -11,9 +11,9 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <Text>Welcome {user?.email}!</Text>
-
-        <Button title="Sign Out" style={styles.button} onPress={() => signOut(auth)} />
+      <Button title="My Recipe" style={styles.button} onPress={() => signOut(auth)} />
+      <Button title="Search 🔎" style={styles.button} onPress={() => signOut(auth)} />
+      <Button title="Message Board" style={styles.button} onPress={() => signOut(auth)} />
     </View>
   );
 }
@@ -21,7 +21,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#0B3654',
     alignItems: 'center',
     justifyContent: 'center',
   },
