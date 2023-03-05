@@ -10,15 +10,26 @@ const Stack = createStackNavigator();
 export default function UserStack() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="RecipeBook" component={HomeScreen} />
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: styles.stack,
+          headerTintColor: "#fff"
+        }}>
+        <Stack.Screen
+          name="RecipeBook"
+          component={HomeScreen}
+        />
+        <Stack.Screen
+          name="MyRecipes"
+          component={HomeScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 const styles = StyleSheet.create({
   stack: {
-    backgroundColor: "0B3654",
+    backgroundColor: "#0B3654",
   },
 
 });
