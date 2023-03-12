@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet } from 'react-native';
 
 import HomeScreen from '../screens/Home';
+import MyRecipes from '../screens/MyRecipes';
 
 const Stack = createStackNavigator();
 
@@ -20,8 +21,10 @@ export default function UserStack() {
           component={HomeScreen}
         />
         <Stack.Screen
-          name="MyRecipes"
-          component={HomeScreen}
+          name="My Recipes"
+          component={
+            MyRecipes
+          }
         />
       </Stack.Navigator>
     </NavigationContainer>

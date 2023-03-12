@@ -1,15 +1,18 @@
 import { useAuthentication } from "../utils/hooks/useAuthentication";
-import { StyleSheet, Text, Button, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { Button } from 'react-native-elements';
 
-export default function HomeScreen() {
+export default function MyRecipes() {
   const { user } = useAuthentication();
 
   return (
     <View style={styles.container}>
-      <header>title="My Recipes"</header>
-      Button title="Uploads"
-      Button title="Saved"
-      Button title="Shared"
+      <Button buttonStyle={styles.button} title="Uploads"
+        titleStyle={styles.button} onPress={() => ""} />
+      <Button buttonStyle={styles.button} title="Saved"
+        titleStyle={styles.button} onPress={() => ""} />
+      <Button buttonStyle={styles.button} title="Shared"
+        titleStyle={styles.button} onPress={() => ""} />
     </View>
   );
 }
@@ -17,10 +20,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#0B3654',
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-evenly',
   },
   button: {
-    marginTop: 10
+    display: "flex"
   }
 })
