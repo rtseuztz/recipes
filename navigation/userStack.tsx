@@ -21,6 +21,12 @@ export default function UserStack() {
       />
       <Stack.Screen
         name="My Recipes"
+        options={{
+          headerStyle: {
+            backgroundColor: "rgb(153, 5, 79)"
+          },
+
+        }}
         component={
           MyRecipes
         }
