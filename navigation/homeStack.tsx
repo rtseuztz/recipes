@@ -30,7 +30,7 @@ export default function HomeStack() {
                     component={UserStack}
                 />
                 <Tab.Screen
-                    name="My Recipes"
+                    name="Settings"
                     component={SettingsScreen}
                     options={{
                         tabBarLabel: 'Profile',
