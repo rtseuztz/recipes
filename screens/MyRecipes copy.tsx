@@ -19,13 +19,15 @@ export default function MyRecipes() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0B3654',
+    backgroundColor: 'white',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'space-evenly',
   },
   button: {
-    display: "flex"
+    display: "flex",
+    backgroundColor: 'rgb'
+
   }
 })
