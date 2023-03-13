@@ -10,24 +10,22 @@ const Stack = createStackNavigator();
 
 export default function UserStack() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerStyle: styles.stack,
-          headerTintColor: "#fff"
-        }}>
-        <Stack.Screen
-          name="RecipeBook"
-          component={HomeScreen}
-        />
-        <Stack.Screen
-          name="My Recipes"
-          component={
-            MyRecipes
-          }
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: styles.stack,
+        headerTintColor: "#fff"
+      }}>
+      <Stack.Screen
+        name="RecipeBook"
+        component={HomeScreen}
+      />
+      <Stack.Screen
+        name="My Recipes"
+        component={
+          MyRecipes
+        }
+      />
+    </Stack.Navigator>
   );
 }
 const styles = StyleSheet.create({
