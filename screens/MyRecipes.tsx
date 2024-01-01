@@ -1,6 +1,6 @@
 import { useAuthentication } from "../utils/hooks/useAuthentication";
 import { StyleSheet, Text, View } from 'react-native';
-import { Button, Icon } from 'react-native-elements';
+import { Button, Card, Icon } from 'react-native-elements';
 import { fonts } from "react-native-elements/dist/config";
 import {
   useFonts,
@@ -18,26 +18,35 @@ export default function MyRecipes() {
     Roboto_400Regular_Italic
 
   });
-  Font
 
   return (
     <View style={styles.container}>
-      <View style={styles.buttoncontainer}>
+      {/* <View style={styles.buttoncontainer}>
         <Button buttonStyle={styles.button} title="Uploads"
           titleStyle={styles.button} onPress={() => ""} />
         <Button buttonStyle={styles.button} title="Saved"
           titleStyle={styles.button} onPress={() => ""} />
         <Button buttonStyle={styles.button} title="Shared"
           titleStyle={styles.button} onPress={() => ""} />
-      </View>
+      </View> */}
       <Text style={{ fontFamily: "Roboto_400Regular_Italic" }}>
         hi
       </Text>
+      <Card>
+        <Card.Title>Card Title</Card.Title>
+        <Card.Divider />
+        <Card.Image source={{ uri: "https://picsum.photos/200/300" }} style={{ height: 200, width: 300 }}>
+          <Text style={{ marginBottom: 10 }}>
+            The idea with React Native Elements is more about component structure than actual design.
+          </Text>
+          <Button
+            icon={<Icon name="code" color="#ffffff" tvParallaxProperties={undefined} />}
+            buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
+            title="VIEW NOW"
+          />
+        </Card.Image>
+      </Card>
 
-      <View style={styles.addcontainer}>
-        <Button buttonStyle={styles.plusbutton} title="+"
-          titleStyle={styles.plusbuttonText} onPress={() => ""} />
-      </View>
 
     </View >
 
@@ -55,7 +64,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: 'rgb(153, 5, 79)',
+    backgroundColor: '#FF8E72',
     alignItems: 'flex-start',
   },
   button: {

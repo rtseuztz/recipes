@@ -13,8 +13,8 @@ const HomeScreen: React.FC<StackScreenProps<any>> = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Button buttonStyle={styles.button} title="My Recipes" titleStyle={styles.button} onPress={() => navigation.navigate("My Recipes")} />
-      <Button buttonStyle={styles.button} title="Search 🔎" titleStyle={styles.button} onPress={() => signOut(auth)} />
-      <Button buttonStyle={styles.button} title="Message Board" titleStyle={styles.button} onPress={() => signOut(auth)} />
+      <Button buttonStyle={styles.button} title="Search 🔎" titleStyle={styles.button} onPress={() => { }} />
+      <Button buttonStyle={styles.button} title="Message Board" titleStyle={styles.button} onPress={() => { }} />
     </View>
   );
 }
@@ -25,10 +25,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#0B3654',
     alignItems: 'center',
     justifyContent: 'center',
+    gap: 10,
   },
   button: {
-    marginTop: 12,
-    fontSize: 32
+    fontSize: 32,
+    borderRadius: 25,
+    display: 'flex'
   }
 });
 export default HomeScreen
