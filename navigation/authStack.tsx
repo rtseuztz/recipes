@@ -9,11 +9,10 @@ import SignOutScreen from '../screens/SignUpScreen';
 const Stack = createStackNavigator();
 
 export default function AuthStack() {
-  /*screenOptions={{ headerShown: false }}*/
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Welcome" component={WelcomeScreen} />
+      <Stack.Navigator >
+        <Stack.Screen options={{ headerShown: false }} name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="Sign In" component={SignInScreen} />
         <Stack.Screen name="Sign Up" component={SignOutScreen} />
       </Stack.Navigator>
