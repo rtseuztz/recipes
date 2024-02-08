@@ -5,19 +5,12 @@ import { fonts } from "react-native-elements/dist/config";
 import {
   useFonts,
   Roboto_400Regular,
-  Bangers_400Regular,
-  OpenSans_400Regular,
   Roboto_400Regular_Italic
 } from "@expo-google-fonts/dev";
 
 export default function MyRecipes() {
   const { user } = useAuthentication();
 
-  let [fontsLoaded] = useFonts({
-    Roboto_400Regular,
-    Roboto_400Regular_Italic
-
-  });
 
   return (
     <View style={styles.container}>
@@ -29,24 +22,9 @@ export default function MyRecipes() {
         <Button buttonStyle={styles.button} title="Shared"
           titleStyle={styles.button} onPress={() => ""} />
       </View> */}
-      <Text style={{ fontFamily: "Roboto_400Regular_Italic" }}>
+      <Text>
         hi
       </Text>
-      <Card>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Divider />
-        <Card.Image source={{ uri: "https://picsum.photos/200/300" }} style={{ height: 200, width: 300 }}>
-          <Text style={{ marginBottom: 10 }}>
-            The idea with React Native Elements is more about component structure than actual design.
-          </Text>
-          <Button
-            icon={<Icon name="code" color="#ffffff" tvParallaxProperties={undefined} />}
-            buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
-            title="VIEW NOW"
-          />
-        </Card.Image>
-      </Card>
-
 
     </View >
 

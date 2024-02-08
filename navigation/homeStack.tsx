@@ -16,7 +16,7 @@ export default function HomeStack() {
             <Tab.Navigator
                 screenOptions={{
                     headerStyle: styles.stack,
-                    headerTintColor: "#fff"
+                    headerTintColor: "#fff",
                 }}>
                 <Tab.Screen
                     name="UserStack"
@@ -45,7 +45,7 @@ export default function HomeStack() {
 }
 const styles = StyleSheet.create({
     stack: {
-        backgroundColor: "#0B3654",
+        backgroundColor: "#FFADFA",
     },
 
 });

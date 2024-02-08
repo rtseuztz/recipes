@@ -3,16 +3,19 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
 import { Button } from 'react-native-elements';
 import Animated, { FadeIn, FadeOut, useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
+import { getAuth, signInAnonymously } from 'firebase/auth';
+
 
 const WelcomeScreen: React.FC<StackScreenProps<any>> = ({ navigation }) => {
+  const auth = getAuth();
   const DURATION = 1000;
   const DELAY = 500;
   const opacity1 = useSharedValue(0);
   const opacity2 = useSharedValue(0);
   const opacity3 = useSharedValue(0);
   opacity1.value = withDelay(1 * DELAY, withTiming(1, { duration: DURATION }))
-  opacity2.value = withDelay(3 * DELAY, withTiming(1, { duration: DURATION }))
-  opacity3.value = withDelay(6 * DELAY, withTiming(1, { duration: DURATION }))
+  opacity2.value = withDelay(2 * DELAY, withTiming(1, { duration: DURATION }))
+  opacity3.value = withDelay(3 * DELAY, withTiming(1, { duration: DURATION }))
   return (
     <View style={styles.container}>
       <Animated.Text style={{ ...styles.header, opacity: opacity1 }}>
@@ -28,16 +31,19 @@ const WelcomeScreen: React.FC<StackScreenProps<any>> = ({ navigation }) => {
         <Pressable style={styles.buttonBorder} onPress={() => navigation.navigate('Sign In')}>
           <Text style={styles.buttonText}>Sign In</Text>
         </Pressable>
-        <Pressable style={styles.buttonBorder} onPress={() => navigation.navigate('Sign In')}>
+        <Pressable style={styles.buttonBorder} onPress={() => anonymousLogin()}>
           <Text style={styles.buttonText}>Continue without signing in</Text>
         </Pressable>
         {/*
         <Pressable title="Continue without an account" buttonStyle={styles.button} onPress={() => navigation.navigate('Sign In')} /> */}
       </Animated.View>
-
-
     </View>
   );
+
+  async function anonymousLogin() {
+    let credentials = await signInAnonymously(auth);
+    console.log(credentials.user.uid)
+  }
 }
 
 const styles = StyleSheet.create({

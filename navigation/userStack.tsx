@@ -13,11 +13,16 @@ export default function UserStack() {
     <Stack.Navigator
       screenOptions={{
         headerStyle: styles.stack,
-        headerTintColor: "#fff"
       }}>
       <Stack.Screen
-        name="RecipeBook"
+        name="ReciPal"
         component={HomeScreen}
+        options={{
+          headerRight: () => (
+            <Button buttonStyle={styles.plusbutton} title="+"
+              titleStyle={styles.plusbuttonText} onPress={() => ""} />
+          ),
+        }}
       />
       <Stack.Screen
         name="My Recipes"
@@ -25,7 +30,6 @@ export default function UserStack() {
           headerTitleStyle: {
             fontWeight: 'bold',
             fontSize: 32,
-            fontFamily: "Bangers_400Regular",
           },
           headerBackTitle: "Back",
           headerRight: () => (
@@ -43,13 +47,16 @@ export default function UserStack() {
 }
 const styles = StyleSheet.create({
   stack: {
-    backgroundColor: "#0B3654",
+    backgroundColor: "#FFADFA",
   },
   plusbutton: {
     backgroundColor: "inherit",
+    borderRadius: 25,
+    marginRight: 20,
+    padding: 0,
   },
   plusbuttonText: {
-    fontSize: 12,
-    color: 'rgb(255,255,255)',
+    fontSize: 32,
+    color: "black",
   }
 });

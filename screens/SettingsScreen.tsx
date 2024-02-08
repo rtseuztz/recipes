@@ -17,8 +17,10 @@ const SettingsScreen: React.FC<StackScreenProps<any>> = ({ navigation }) => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <View style={{ flex: 1, padding: 16 }}>
+                <Button buttonStyle={styles.button} title="My Recipes" titleStyle={styles.button} onPress={() => navigation.navigate("My Recipes")} />
                 <Button title="Log Out" buttonStyle={styles.button} onPress={() => signOut(auth)}></Button>
             </View>
+
         </SafeAreaView>
     );
 };

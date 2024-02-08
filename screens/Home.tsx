@@ -4,6 +4,7 @@ import { useAuthentication } from '../utils/hooks/useAuthentication';
 import { Button } from 'react-native-elements';
 import { getAuth, signOut } from 'firebase/auth';
 import { StackScreenProps } from '@react-navigation/stack';
+import { Card } from '@rneui/themed';
 
 const auth = getAuth();
 
@@ -12,9 +13,10 @@ const HomeScreen: React.FC<StackScreenProps<any>> = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Button buttonStyle={styles.button} title="My Recipes" titleStyle={styles.button} onPress={() => navigation.navigate("My Recipes")} />
-      <Button buttonStyle={styles.button} title="Search 🔎" titleStyle={styles.button} onPress={() => { }} />
-      <Button buttonStyle={styles.button} title="Message Board" titleStyle={styles.button} onPress={() => { }} />
+      <Card>
+        <Text>Welcome to the Recipe App</Text>
+      </Card>
+      {/* <Button buttonStyle={styles.button} title="Message Board" titleStyle={styles.button} onPress={() => { }} /> */}
     </View>
   );
 }
@@ -22,7 +24,7 @@ const HomeScreen: React.FC<StackScreenProps<any>> = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0B3654',
+    backgroundColor: '#FFADFA',
     alignItems: 'center',
     justifyContent: 'center',
     gap: 10,
