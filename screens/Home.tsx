@@ -3,20 +3,23 @@ import { StyleSheet, Text, View, FlatList } from 'react-native';
 import { useAuthentication } from '../utils/hooks/useAuthentication';
 import { getAuth, signOut } from 'firebase/auth';
 import { StackScreenProps } from '@react-navigation/stack';
-import RecipeCard, { recipeCardType } from '../components/recipeCard';
+import RecipeCard, { recipeType } from '../components/recipeCard';
 import recipesCollection from '../data/recipes';
-import { collection, query, where, limit, orderBy, startAt, getDoc, getDocs } from 'firebase/firestore';
+import { collection, query, where, limit, orderBy, startAt, getDoc, getDocs, Timestamp } from 'firebase/firestore';
+import getRecipes from '../data/recipes';
 
 const auth = getAuth();
 
 const HomeScreen: React.FC<StackScreenProps<any>> = ({ navigation }) => {
   const { user } = useAuthentication();
-  const [recipes, setRecipes] = React.useState<recipeCardType[]>([])
+  const [recipes, setRecipes] = React.useState<recipeType[]>([])
   const [offsetNum, setOffsetNum] = React.useState(0)
   const limitNum = 10
 
-  const recipe: recipeCardType = {
+  const recipe: recipeType = {
     id: "1",
+    createdDate: new Timestamp(0, 0),
+    lastModified: new Timestamp(0, 0),
     name: "Test",
     description: "Test",
     ingredients: ["Test"],
@@ -25,17 +28,20 @@ const HomeScreen: React.FC<StackScreenProps<any>> = ({ navigation }) => {
   }
 
   useEffect(() => {
-    const getRecipes = async () => {
-      const q = query(recipesCollection, orderBy("name"), limit(limitNum), startAt(offsetNum))
-      const querySnapshot = await getDocs(q)
-      querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
-        setRecipes([...recipes, doc.data() as recipeCardType])
-      });
+    // const getRecipes = async () => {
+    //   const q = query(recipesCollection, orderBy("name"), limit(limitNum), startAt(offsetNum))
+    //   const querySnapshot = await getDocs(q)
+    //   querySnapshot.forEach((doc) => {
+    //     // doc.data() is never undefined for query doc snapshots
+    //     console.log(doc.id, " => ", doc.data());
+    //     setRecipes([...recipes, doc.data() as recipeCardType])
+    //   });
+    // }
+    const getRecipesInteral = async () => {
+      setRecipes(await getRecipes(offsetNum, limitNum))
+      setOffsetNum(offsetNum + limitNum)
     }
-    getRecipes()
-    setOffsetNum(offsetNum + limitNum)
+    getRecipesInteral();
   }, [])
 
   // const recipes: recipeCardType[] = recipes
