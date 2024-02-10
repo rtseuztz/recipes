@@ -1,4 +1,4 @@
-import { collection, getDocs, limit, orderBy, query, startAt, where } from "firebase/firestore"
+import { QueryConstraint, collection, getDocs, limit, orderBy, query, startAfter, startAt, where } from "firebase/firestore"
 import { getDownloadURL, getStorage, ref } from "firebase/storage";
 import db from "./_db";
 import { recipeType } from "../components/recipeCard";
@@ -6,12 +6,15 @@ import storage from "./_storage";
 
 const recipesCollection = collection(db, "recipes");
 const imageRef = ref(storage)
-export default async function getRecipes(offset: number, lim: number) {
-    const q = query(recipesCollection, limit(lim), orderBy("name"), startAt(offset));
+export default async function getRecipes(lastItemName: string, lim: number) {
+    let constraints: QueryConstraint[] = [orderBy("name"), limit(lim)];
+    if (lastItemName) {
+        constraints.push(startAfter(lastItemName));
+    }
+    const q = query(recipesCollection, ...constraints);
     const querySnapshot = await getDocs(q);
     const recipes: recipeType[] = [];
     querySnapshot.forEach((doc) => {
-        console.log(doc.id, " => ", doc.data());
         recipes.push(doc.data() as recipeType);
     });
     //get images for each recipe
@@ -25,7 +28,6 @@ export default async function getRecipes(offset: number, lim: number) {
             imageUrls.push(imageUrl);
         }
         recipe.images = imageUrls;
-        console.log(recipe);
     }
     return recipes;
 }

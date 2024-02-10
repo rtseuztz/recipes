@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         borderTopEndRadius: 15,
         borderTopStartRadius: 15,
         height: "100%",
-        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        backgroundColor: 'rgba(255, 255, 255, 0.7)',
         justifyContent: 'flex-end'
     },
     recipeName: {
