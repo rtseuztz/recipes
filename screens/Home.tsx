@@ -20,9 +20,23 @@ const HomeScreen: React.FC<StackScreenProps<any>> = ({ navigation }) => {
     setRecipes([...recipes, ...recipesResponse])
   }
   useEffect(() => {
+    // setRecipes(recipesTest);
     getRecipesInteral();
   }, [])
 
+  //test array with 100 elements
+  const recipesTest = new Array(100).fill(0).map((_, i) => {
+    return {
+      id: i.toString(),
+      createdDate: Timestamp.now(),
+      lastModified: Timestamp.now(),
+      name: `Recipe ${i}`,
+      description: `Description ${i}`,
+      ingredients: [`Ingredient ${i}`],
+      instructions: [`Instruction ${i}`],
+      images: ['https://via.placeholder.com/150']
+    }
+  })
   const [refreshing, setRefreshing] = React.useState(false);
 
   const onRefresh = React.useCallback(async () => {
@@ -44,6 +58,8 @@ const HomeScreen: React.FC<StackScreenProps<any>> = ({ navigation }) => {
         numColumns={2}
         key={2}
         keyExtractor={(item) => item.id}
+        initialNumToRender={10}
+        maxToRenderPerBatch={10}
         renderItem={({ item }) => <RecipeCard recipe={item}></RecipeCard>}
       />
     </SafeAreaView>

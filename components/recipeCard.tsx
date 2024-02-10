@@ -27,17 +27,19 @@ export default function RecipeCard({ recipe }: { recipe: recipeType }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 20,
-        backgroundColor: 'transparent',
+        backgroundColor: '#FFADFA', //needed a color for infinite scroll
+        shadowColor: 'transparent',
         borderColor: 'transparent',
         padding: 0,
         margin: 0,
         marginHorizontal: 2,
         marginTop: 2,
+        height: 300,
+
     },
     textContainer: {
-        flex: 1,
         zIndex: 1,
+        maxHeight: "15%",
         borderTopEndRadius: 15,
         borderTopStartRadius: 15,
         height: "100%",
