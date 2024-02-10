@@ -39,7 +39,9 @@ const HomeScreen: React.FC<StackScreenProps<any>> = ({ navigation }) => {
     // }
     const getRecipesInteral = async () => {
       setRecipes(await getRecipes(offsetNum, limitNum))
+      // add multiple of the same recipe
       setOffsetNum(offsetNum + limitNum)
+      console.log(recipes)
     }
     getRecipesInteral();
   }, [])
