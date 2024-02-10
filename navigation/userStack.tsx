@@ -22,6 +22,7 @@ export default function UserStack() {
             <Button buttonStyle={styles.plusbutton} title="+"
               titleStyle={styles.plusbuttonText} onPress={() => ""} />
           ),
+          headerShadowVisible: false,
         }}
       />
       <Stack.Screen

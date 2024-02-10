@@ -13,29 +13,52 @@ export type recipeType = {
     images: string[],
     imageBlobs?: Blob[]
 }
-function hello() {
-    console.log("hello")
-}
+
 export default function RecipeCard({ recipe }: { recipe: recipeType }) {
     return (
         <Card containerStyle={styles.container}>
-            <Image style={styles.imageStyle} onLoad={hello} source={{ uri: recipe.images[0] }} />
+            <Image containerStyle={styles.imgContainer} source={{ uri: recipe.images[0] }} />
+            <View style={styles.textContainer}>
+                <Text style={styles.recipeName}>{recipe.name}</Text>
+            </View>
         </Card>
     )
 }
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        borderRadius: 15,
-        width: "100%",
-        height: 300,
-        marginTop: 0,
-        marginBottom: 2,
-        marginHorizontal: 2
+        paddingTop: 20,
+        backgroundColor: 'transparent',
+        borderColor: 'transparent',
+        padding: 0,
+        margin: 0,
+        marginHorizontal: 2,
+        marginTop: 2,
     },
-    imageStyle: {
-        width: "100%",
+    textContainer: {
+        flex: 1,
+        zIndex: 1,
+        borderTopEndRadius: 15,
+        borderTopStartRadius: 15,
         height: "100%",
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        justifyContent: 'flex-end'
+    },
+    recipeName: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        padding: 10,
+        textAlign: 'center',
+        zIndex: 1,
+    },
+    imgContainer: {
+        flex: 1,
+        height: 300,
+        overflow: 'hidden',
+        borderWidth: 1,
+        borderColor: '#fff',
+        position: 'absolute',
+        width: '100%',
+        borderRadius: 15,
     }
 });
