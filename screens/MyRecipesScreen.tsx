@@ -1,38 +1,25 @@
 import { useAuthentication } from "../utils/hooks/useAuthentication";
 import { StyleSheet, Text, View } from 'react-native';
-import { Button, Card, Icon } from 'react-native-elements';
-import { fonts } from "react-native-elements/dist/config";
-import {
-  useFonts,
-  Roboto_400Regular,
-  Roboto_400Regular_Italic
-} from "@expo-google-fonts/dev";
+import { Button } from 'react-native-elements';
 
-export default function MyRecipes() {
+export default function MyRecipesScreen() {
   const { user } = useAuthentication();
-
 
   return (
     <View style={styles.container}>
-      {/* <View style={styles.buttoncontainer}>
-        <Button buttonStyle={styles.button} title="Uploads"
-          titleStyle={styles.button} onPress={() => ""} />
-        <Button buttonStyle={styles.button} title="Saved"
-          titleStyle={styles.button} onPress={() => ""} />
-        <Button buttonStyle={styles.button} title="Shared"
-          titleStyle={styles.button} onPress={() => ""} />
-      </View> */}
+      <View style={styles.buttoncontainer}>
+        <Button buttonStyle={styles.button} title="Uploads" titleStyle={styles.button} onPress={() => ""} />
+        <Button buttonStyle={styles.button} title="Saved" titleStyle={styles.button} onPress={() => ""} />
+        <Button buttonStyle={styles.button} title="Shared" titleStyle={styles.button} onPress={() => ""} />
+      </View>
       <Text>
         hi
       </Text>
-
     </View >
-
   );
 }
 const styles = StyleSheet.create({
   buttoncontainer: {
-    backgroundColor: 'rgb(153, 5, 79)',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'flex-start',
@@ -42,7 +29,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#FF8E72',
+    backgroundColor: '#4f8c5f',
     alignItems: 'flex-start',
   },
   button: {

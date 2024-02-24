@@ -1,7 +1,7 @@
 import { Card, Image } from "@rneui/themed";
 import { View, Text, StyleSheet } from "react-native";
 import { Timestamp } from "firebase/firestore";
-export type recipeType = {
+export type RecipeType = {
     id: string,
     createdDate: Timestamp,
     lastModified: Timestamp,
@@ -16,26 +16,40 @@ export type recipeType = {
 function hello() {
     console.log("hello")
 }
-export default function RecipeCard({ recipe }: { recipe: recipeType }) {
+export default function RecipeCard({ recipe }: { recipe: RecipeType }) {
     return (
-        <Card containerStyle={styles.container}>
-            <Image style={styles.imageStyle} onLoad={hello} source={{ uri: recipe.images[0] }} />
+        <Card containerStyle={styles.card}>
+            <Text style={styles.title}>{recipe.name}</Text>
+            <Text style={styles.description}>{recipe.description}</Text>
+            <Image style={styles.image} onLoad={hello} source={{ uri: recipe.images[0] }} />
         </Card>
     )
 }
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
+    card: {
         borderRadius: 15,
-        width: "100%",
-        height: 300,
-        marginTop: 0,
-        marginBottom: 2,
-        marginHorizontal: 2
+        height: 400,
+        marginTop: 4,
+        marginBottom: 12,
+        marginHorizontal: 2,
+        shadowColor: "lightgray",
+        shadowOffset: {
+            width: -2,
+            height: -2
+        }
     },
-    imageStyle: {
+    image: {
         width: "100%",
-        height: "100%",
+        height: "90%",
+        borderRadius: 10,
+    },
+    title: {
+        fontSize: 24,
+        fontWeight: "400",
+        marginBottom: 4,
+    },
+    description: {
+        color: 'gray',
+        marginBottom: 8,
     }
 });

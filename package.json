@@ -1,5 +1,5 @@
 {
-  "name": "expo-with-firebase-auth-demo",
+  "name": "recipes",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -29,7 +29,7 @@
     "firebase": "^9.6.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-native": "0.72.6",
+    "react-native": "0.72.10",
     "react-native-elements": "^3.4.2",
     "react-native-reanimated": "~3.3.0",
     "react-native-web": "~0.19.6",

@@ -26,4 +26,5 @@ export function useAuthentication() {
   return {
     user, loading
   };
+  
 }

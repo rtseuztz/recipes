@@ -2,7 +2,7 @@ import { useAuthentication } from "../utils/hooks/useAuthentication";
 import { StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-elements';
 
-export default function MyRecipes() {
+export default function AddRecipe() {
   const { user } = useAuthentication();
 
   return (
